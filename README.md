@@ -9,7 +9,9 @@ It's a place to save notes and challenges accomplished with DIO (Digital Innovat
 The course started by:
 
  1. Jobs and Organizational Tasks
- 2. Agile Development 
+ 
+ 2. Agile Development ++ (Software Project Management)
+
  3. Logic and Computational Thinking
     1. Requirements:
         - Functional: It is funtionalities 
@@ -31,6 +33,7 @@ The course started by:
         - PA/PG
     7. Create an Diagram
     8. Implement!
+
  4. Git Github:
     - Git: local software
         - Distributed Logic
@@ -63,4 +66,15 @@ The course started by:
             4. Push changings
             5. Pull requests that branch to Original one
         - Use SSH or Token to commit changings to cloud.
+        
+    5. Why Docker. How to Docker. [Click here for more](https://github.com/gui-sa/DIO_Training/Docker_Lessons)
+        - Stays on a base OS, in general by virtualization controled by the "HyperVisor".
+        - A server can have more the one OS installed on top of it.(Generaly it is Linux Server)
+        - An OS can have more than one container running in the same time.
+        - The base OS (with Docker Engine) deploys automatically the containers as soons as it is demmanded
+        - Docker do not needs to recopy a base OS so it is lighter and more performatic
+        - It is a good match to Microsservices architecture
+        - Brings Cloud to reality
+    
+    
 
