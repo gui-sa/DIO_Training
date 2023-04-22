@@ -68,13 +68,15 @@ The course started by:
         - Use SSH or Token to commit changings to cloud.
         
     5. Why Docker. How to Docker. [Click here for more](https://github.com/gui-sa/DIO_Training/Docker_Lessons)
-        - Stays on a base OS, in general by virtualization controled by the "HyperVisor".
+        - Stays on a base OS, in general by virtualization controled by the "HyperVisor" (a system that limits and translates the systems call between systems).
         - A server can have more the one OS installed on top of it.(Generaly it is Linux Server)
         - An OS can have more than one container running in the same time.
         - The base OS (with Docker Engine) deploys automatically the containers as soons as it is demmanded
         - Docker do not needs to recopy a base OS so it is lighter and more performatic
         - It is a good match to Microsservices architecture
         - Brings Cloud to reality
+        - The container **needs to** be compatible with the base Operational System.
+        - Virtual Machines have more funcitionality and have more operations than containers, tho.
     
     
 
