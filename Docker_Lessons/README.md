@@ -79,6 +79,11 @@ Removes ***all*** Container:
 sudo docker rm $(sudo docker ps -a -q)
 ~~~
 
+Downloads an image from docker repo:
+~~~
+sudo docker pull [image_name]
+~~~ 
+
 Removes an docker image:
 ~~~
 sudo docker rmi [docker_image_id]
@@ -135,7 +140,27 @@ Creating a Container From an Image (the usual):
 > Flag ***-d*** creates a container but don't executes the bash 
 > Flag ***-p*** maps an IP from the container to an IP in the Host
 > Flag ***--net*** \[Binded_Network_Name] puts a container inside a docker Network 
+> Flag ***-it*** a new container runs and in the same terminal, the container terminal opens.
 > So a PORT coded inside a container is mapped to an host PORT ... A container starts with an IP an exposes an PORT when mapped. 
 ~~~
 sudo docker run –-name [Container_Name] -d -p [Host_Port]:[Container_Port] [Image_Name]
 ~~~
+~~~
+sudo docker run –-name [Container_Name] -it -p [Host_Port]:[Container_Port] [Image_Name]
+~~~
+
+Shows all docker commands (older commands):
+~~~
+sudo docker --help
+~~~ 
+
+Shows all docker commands (new commands):
+~~~
+sudo docker container --help
+~~~ 
+
+To inspect containers informations:
+~~~
+sudo docker inspect [container_name]
+~~~ 
+

@@ -77,6 +77,13 @@ The course started by:
         - Brings Cloud to reality
         - The container **needs to** be compatible with the base Operational System.
         - Virtual Machines have more funcitionality and have more operations than containers, tho.
-    
+    To acess a server using ssh 
+~~~
+ssh user@IP
+~~~
+    To find server IP (you need to be inside the server):
+~~~
+ip a
+~~~
     
 
