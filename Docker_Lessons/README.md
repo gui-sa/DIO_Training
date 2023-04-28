@@ -370,7 +370,7 @@ The problem is that by running these commands, you expose **all** your ports ove
 
 ## Interesting Dockers:
 
- - **httpd** Creates an Apache server that ups an index.html, style.css and script.js... Static web sites.
+ - **[httpd](https://hub.docker.com/_/httpd)** Creates an Apache server that ups an index.html, style.css and script.js... Static web sites.
  - **ubuntu** Creates an ubuntu (with no interactive terminal and GNOME) that servers a linux
  - **mysql** Creates a mysql database server
  - **adminer** To access the sql server
