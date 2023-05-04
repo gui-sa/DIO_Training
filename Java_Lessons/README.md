@@ -11,6 +11,7 @@ Sumary:
  - [Folder Structure](#folder_structure)
  - [Variable Types](#types)
  - [Automatic Conversions](#coerce)
+ - [Random](#random)
  - [Strings](#str)
  - [Dates](#date)
  - [Some Functions Examples](#function)
@@ -19,6 +20,7 @@ Sumary:
  - [Scope](#scope)
  - [Logic Operators](#logic)
  - [Bitwise Operators](#bit)
+ - [Overload](#over)
  - [Usefull Links](#link_u)
  - [Other Links](#link_o)
 
@@ -90,7 +92,12 @@ Sumary:
     ~~~
     java -cp [directory] [classname... it is the .class bytecode file however runs it classname only]
     ~~~
+    ~~~
+    java [classname... it is the .class bytecode file however runs it classname only]
+    ~~~
     - For more [peak the example](./MeuPrimeiroProJava/CMD.png)
+> To run a java package: compile main class and then run subpackage1.subpackage2...main <br>
+> It is not worth to run java project outside an IDE because it takes too long to run and iterate.
 
 <div id='class_anatomy' /> 
 
@@ -164,8 +171,30 @@ Converter um numero valor pequeno em um grande: não vai ter errado, mas o errad
 
 Its an object that saves sequentially a same primmitive type <br>
 It is **STATIC** <br>
-It can be a vector or a matrix of mult dimensions... It is created by pointer that saves inside it other pointer that saves... (so on, even tho Java dont have a direct pointer definition). 
+It can be a vector or a matrix of mult dimensions... It is created by pointer that saves inside it other pointer that saves... (so on, even tho Java dont have a direct pointer definition). <br>
+To write an Array that have a presetted value:
+~~~
+type [] name = {i0, i1, i2, i3, i4}
+~~~
+To write an Array without value just:
+~~~
+type[] name = new type[numberInstance] ;
+~~~
+Or for multdimensional arrays:
+~~~
+type[][] name = new type[numberInstance][numberInstance2] ;
+~~~
 
+You cannot print an array directly (because it will show you its memory address - pointer) <br>
+To print you will need to use a repetition loop or *for each* function <br>
+
+### for each:
+
+It is used as another way of using for: ***for(type name: array from that type){}***
+
+### Atributes:
+
+ - **.length**: will show you its length
 
 <div id='coerce' />
 
@@ -173,12 +202,150 @@ It can be a vector or a matrix of mult dimensions... It is created by pointer th
 
  - se voce colocar string somando um numero: o numero vai ser convertido para string e então concatenado
 
+<div id='class' />
+
+## Class
+Classes are objects blueprints. Objects are abstractions of a instance of a problem. <br>
+To create a class simply:
+~~~
+[incapsulation mode: public/protected/private] class NameOfClass{
+   //class atributes and methods
+}
+~~~
+> It might be a good idea to ensure an YAGNI and SGR principles 
+>> Usually a class will interact with OTHER classes... so it will need to import or to be in a package.
+
+<div id='contructor' />
+
+### Contructor
+
+The constructor are a special method that are run to create a NEW OBJECT (an isolated instance of the blueprint). <br>
+To create a constructor simply:
+~~~
+[incapsulation mode: public/protected/private] class NameOfClass{
+   NameOfClass(){
+      // Constructor things...
+   }
+}
+~~~
+
+<div id='contructor' />
+
+### Destructor:
+
+The destructor are a special methods that are run to help garbage colector to delete an existing OBJECT (an isolated instance of the blueprint). <br>
+To create a destructor simply:
+~~~
+[incapsulation mode: public/protected/private] class NameOfClass{
+   void finalize(){
+      // destructor here
+   }
+}
+~~~
+> finalize() is a special word in java.
+
+<div id='atribs' />
+
+### Atributes and Parameters
+   To create an atribute of an object simply:
+> Atributes are objects/functions linked variables <br>
+> Parameter are passed values for methods/functions
+
+~~~
+[incapsulationMode: public/protected/private] class NameOfClass{
+   [incapsulationMode] [type] nameAtrib;
+}
+~~~
+   To access it inside your object use ***this.nameAtrib***. You can use nameAtrib directly, however, it is not recomended because you might create a parameter with same name. 
+
+<div id='met' />
+
+
+### Methods
+
+ Can have diferent modifiers: 
+ > Its sign is its name plus its parameters <br>
+ > Constructor creates an object <br>
+ > A destructor destroys an object <br>
+ > Message is when you execute it () symbol <br>
+ > Parameters can be passed by **copy** or by **reference** <br>
+ >> The *copy* is passed and so the outside variable is not effected <br>
+ >> The *reference* type you pass its memory address and so the outside variable is affected  <br>
+ > Use camelCase
+
+ - ***public***, ***protected*** or ***private***
+ - concrete or abstract
+ - static or final
+ > static is when a methods is linked to its class instead of its object instance
+ - type expected to return or void
+ - Its name
+ - Parameters
+ - Exceptions
+ - Its code.
+
+Set/Get methods are methods used to access atributes inside an object
+
+<div id='obj' />
+
+### Creating new Object:
+First of all, your code needs to see the class through import or package. <br>
+After that simply:
+~~~
+ClassName objName = new ClassName(); 
+~~~
+> You can call whanever overloaded constructor you want! (that are implemented of course). <br>
+> The returned value is a *pointer* a *memory address*. To use it properly you will need to access its atributes or its methods! 
+>> Be carefull when using: objA = objB ... You will be linking it pointer and so a change in one of them will mean a change in the other! Dont forget to create a ***new*** instance. <br>
+>> objName.Method() for normal methods<br>
+>> ClassName.Method() for *STATIC* methods
+> You can have a list or an array of an object <br>
+
+### Heritage:
+Creating sub-classes: you can reuse code.
+
+~~~
+class subClassA extends superClassb{
+   //implements class A
+}
+~~~
+Class A heritages class B atributes and methods... Class A is specialized in relation to B <br>
+
+You can have some types of heritages:
+ - Simple: Sub class have just one Parent class
+ - Multiple: Sub Class have more than one parent class
+ > Multiple heritage is avoidable... Java doesnt implement.
+
+To correctly implement a class that completes the superclass:
+~~~
+SuperClass objName = new SubClass()
+~~~
+This is named Upcast.
+
+<div id='random' />
+
+## Random
+
+To create an randomizer object:
+Import its package:
+~~~
+import java.util.Random; 
+~~~
+~~~
+Random name = new Random();
+~~~
+To generate a randomized using *name* object:
+~~~
+type otherName = name.nextType(bound)
+~~~
+
 <div id='str' />
 
 ## Strings
 
- - .concat(str)
- - Just use the "+" sign
+ - ***.concat(str)*** : to contat a base string to another
+ - ***Just use the "+" sign***: to concat two strings
+ - ***.equals()***: to compare Strings value
+ - ***.equalsIgnoreCase()***: to compare strings ignoring uppercase letter
 
 <div id='date' />
 
@@ -247,13 +414,24 @@ Os escopos são feitos por meio dos blocos.
  - \>>>
  - <<
 
-<div id='links_u' />
+<div id='over' />
+
+## Overload:
+
+Its is the capability of using same method/function name whanever changing the parameter types and expected return. <br>
+A valid Overload is a diferent Method/Function signment (name plus parameters type order)... <br>
+It can have diferents parameters and its receiving orders;
+> Overload is diferent concept of overwrite. <br>
+> You can overload if return is diferent type, diferent order type on parameters, diferent parameters.
+
+
+<div id='link_u' />
 
 ## Usefull Links:
 
  - [Basic Java](https://glysns.gitbook.io/java-basico/)
 
-<div id='links_o' />
+<div id='link_o' />
 
 ## Others Links:
  - [Teacher GitHub Material](https://github.com/digitalinnovationone/trilha-java-basico)
@@ -267,6 +445,7 @@ Sumary:
  - [Folder Structure](#folder_structure)
  - [Variable Types](#types)
  - [Automatic Conversions](#coerce)
+ - [Random](#random)
  - [Strings](#str)
  - [Dates](#date)
  - [Some Functions Examples](#function)
@@ -275,6 +454,7 @@ Sumary:
  - [Scope](#scope)
  - [Logic Operators](#logic)
  - [Bitwise Operators](#bit)
+ - [Overload](#over)
  - [Usefull Links](#link_u)
  - [Other Links](#link_o)
 
