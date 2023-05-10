@@ -196,7 +196,65 @@ It is used as another way of using for: ***for(type name: array from that type){
 
  - **.length**: will show you its length
 
-<div id='coerce' />
+<div id='collections' />
+
+## Collections
+Interface Collections has sub interfaces List, Set and Queue
+
+<div id='lists' />
+
+### Lists
+
+To work with lists you will need to import ***java.util.List*** <br>
+ - It has index, but to iterato you will need and Iterator Object;
+ - Accepts duplicates
+ - Can be of any other objects,
+ - Comparable and comparator is important abstract methods...
+ - The order you put it ther order it stays put;
+ You can have two type of lists both dynamic types... Their diferences are listed [here](https://medium.com/@mckenziefiege/arrays-linked-lists-and-big-o-notation-486727b6259b)
+ - LinkedArray
+  - It is doubly linked.
+  - Better for manipulation (adding or removing it)
+  - They are static under the hood and linked one to another using pointers
+  - O(1) to adding in beggining
+  - O(n) to access or removing or creating in any location
+ - ArrayList
+  - It is better used when adding/removing is less common than accessing it.
+  - Under the hood Java produces a static array... when you need to increase its size, you can
+  - O(1) to access from any location or creating on the beggining
+  - O(n) to create or remove in any location
+You can Iterate it using an **Iterator**, using for each or using a for .get method <br>
+Some methods:
+ - .add()
+ - .get()
+ - .indexOf()
+ - size()
+ - .remove()
+
+<div id='set' />
+
+### SET interface:
+To work with lists you will need to import ***java.util.Set*** <br>
+ - Do not has index
+ - Do not accept duplicates
+
+ ~~~
+ Set<type> nameOfSet = new HashSet<>()
+ ~~~
+To iterate and compare object you will need an iterator object
+ - .contains(value) : retorna true ou false 
+ - Collections.min(Set)
+ - Collections.max(Set)
+
+### Iterator:
+Needs to import java.util.Iterator;
+~~~
+   Iterator<typeWhichIsGoingToBeIterated> iteratorName = collectionName.iterator();
+   while(iteratorName.hasNext()){
+         // iteratorName.next() gets iterated value
+   }
+~~~
+You can use the iterated's methods.
 
 ## Conversões automaticas de tipos de variaveis... Coersão
 
@@ -321,6 +379,22 @@ SuperClass objName = new SubClass()
 ~~~
 This is named Upcast.
 
+### Polimorfism
+When same method acts diferently depending on subclass or atributes. Polimorfism can be performed using overriding, abstract and overloading. <br>
+It is said to poliform when you create a list of SuperClass when each instance is a subclass... then, because each subclass has an @override method, its methods acts diferent from others. <br>
+If you call a method of a subclass it will be called as pure override... In other words, polimorfism is just a concept. <br>
+
+### Interface and abstract:
+An interface is a class that only has abstract methods... It is used when you want to use functions predefined, however, implement its methods in diferent ways... It is almost a superclass, or, an abstract class.
+
+### Extends:
+Another way to create a subclass heritaging all methods and atributes.
+~~~
+class subclass extends superclass{
+   
+}
+~~~
+
 <div id='random' />
 
 ## Random
@@ -372,7 +446,11 @@ A função javadoc atualiza e cria uma documentação de todas as classes (que f
 <div id='scanner' />
 
 ## Scanner 
-It is an object that can receive information from input terminal.
+It is an object that can receive information from input terminal.<br>
+First, import its package;
+~~~
+import java.util.Scanner;
+~~~
 
 ~~~
 Scanner nomeDoScan = new Scanner(System.in).useLocale(Locale.US);
