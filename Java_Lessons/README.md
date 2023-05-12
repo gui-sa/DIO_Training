@@ -228,18 +228,46 @@ Some methods:
  - .add()
  - .get()
  - .indexOf()
- - size()
+ - .size()
  - .remove()
+ - .addAll()
+For some examples, just give a peak at [CollectionsA](./CollectionsA/src/edu/exercises/list1/Main.java). In that example you will see some:
+ - Lambda functions
+ - Colectors
+ - Iterator
+ - List
+ - Copy list to another
+ - Create a list
+ - remove an item
+ - add an item
+ - Sum
+ - Average
 
 <div id='set' />
 
-### SET interface:
+### SET :
 To work with lists you will need to import ***java.util.Set*** <br>
  - Do not has index
  - Do not accept duplicates
 
+It has three types:
+ - HashSet 
+   - Internally it is converted to a HashMap..
+   - Dont maintain any order because it depends on Hash function
+   - Best Performance
+   - null will be counted once...
+   -
+ - LinkedHashSet
+   - Internally it is converted to a LinkedHashMap..
+   - Maintain insertion order
+   - Its performance is better than TreeSet
+   - null will be counted once...
+ - TreeSet
+   - Internally it is converted to a TreeMap..
+   - It is has natural order of the default sort()/comparable()
+
  ~~~
- Set<type> nameOfSet = new HashSet<>()
+ Set<type> nameOfSet = new SetType<>()
  ~~~
 To iterate and compare object you will need an iterator object
  - .contains(value) : retorna true ou false 

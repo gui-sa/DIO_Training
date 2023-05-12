@@ -82,18 +82,53 @@ public class Main {
                 System.out.println(Collections.max(tempMeses));
 
                 // Can you sort it in crescent way?
-                Collections.sort(tempMeses); //It was possible becase double class has comparable interface with compareTo method implemented inside
+                Collections.sort(tempMeses); // It was possible becase double class has comparable interface with
+                                             // compareTo method implemented inside
                 System.out.println(tempMeses);
 
                 // Can I invert it?
 
-
-
-                Collections.sort(tempMeses,(new Comparator<Double>() {
+                Collections.sort(tempMeses, (new Comparator<Double>() {
                         @Override
-                        public int 
+                        public int compare(Double d1, Double d2) {
+                                if (d1 < d2)
+                                        return 1; // returns 1 to say to first one gets to the right
+                                if (d1 > d2)
+                                        return -1; // returns -1 to say to the first one gets to the left
+                                return 0; // 0 to stays the same
+                        }
                 })); // To change default way
                 System.out.println(tempMeses);
 
+                // Bro, use a class because reasons:
+                Collections.sort(tempMeses, new InvertedDouble());
+                System.out.println(tempMeses);
+
+                // Bro... dont use a class... Use Lambda Functions... much cleaner
+                Collections.sort(tempMeses, (o1, o2) -> o1.compareTo(o2));
+                System.out.println(tempMeses);
+
+                // Bro... Please... Get a copy of this list... yoy are getting that one messy!
+                List<Double> testezimDouble = new ArrayList<>() {
+                        {
+                                addAll(tempMeses);
+                        }
+                };
+                System.out.println(testezimDouble);
+                testezimDouble.add(10000d);
+                System.out.println(testezimDouble);
+                System.out.println(tempMeses);
+
+        }
+
+        static class InvertedDouble implements Comparator<Double> {
+                @Override
+                public int compare(Double o1, Double o2) {
+                        if (o1 < o2)
+                                return 1; // returns 1 to say to first one gets to the right
+                        if (o1 > o2)
+                                return -1; // returns -1 to say to the first one gets to the left
+                        return 0; // 0 to stays the same
+                }
         }
 }
