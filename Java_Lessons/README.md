@@ -117,7 +117,7 @@ Sumary:
 ## Folders Structure
 
 The basic Structure of a java project:
- 
+ > It is highly recommended that you start a project and sets it up for your IDE... otherwise it will get buggy.
  - ***bin***: Created by IDE to put *.class* files
  - ***lib***: Created by the IDE to organize its libraries
  - ***src***: Where the source code and bytecode lives
@@ -137,6 +137,9 @@ In your code.java (this case: api.java) you need to write in the first line:
 ~~~
 package com.enterprise.notification.whasappapi;
 ~~~
+
+To use classes from others packages you will need to ***import***<br>
+[Here](./CollectionsC/) is a nice example of how things works.
 
 Might have more than one file inside a package
 
@@ -281,6 +284,28 @@ To iterate and compare object you will need an iterator object
  - .contains(value) : retorna true ou false 
  - Collections.min(Set)
  - Collections.max(Set)
+
+### Map:
+
+That collection is linked with hashtable. They usually map a key to a value (just like a dictionary).<br>
+There are three types of MAP:
+ - HashMap
+   - Big O (1) to access, save and remove
+   - null key allowed
+   - Random order - variant depending on hashcode.
+   - methods *equals* and *hashCode* needs to be overriden
+ - LinkedHashMap
+   - Big O (1) to access, save and remove
+   - Maintain the order in which it was put like a stack
+   - methods *equals* and *hashCode* needs to be overriden
+ - TreeMap
+   - Big O (log(n)) to access, save and remove
+   - Natural order from comparable or a order from a comparator.
+   - methods *comparaTo* from Comparable interface or *compare* from comparator interface needs to be implemented.
+
+Click [here](./CollectionsC) for an example!<br>
+Some Functions:
+ - .put(key,value)
 
 ### Iterator:
 Needs to import java.util.Iterator;
