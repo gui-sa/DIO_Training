@@ -247,8 +247,15 @@ For some examples, just give a peak at [CollectionsA](./CollectionsA/src/edu/exe
 
 ### SET :
 To work with lists you will need to import ***java.util.Set*** <br>
+You usually use SET to dump a list and remove its duplicates.
  - Do not has index
  - Do not accept duplicates
+   - It checks *equals* and *hashcode* methods.
+   >If two objects are equal according to the equals(Object) method, then calling the hashcode() method on each of the two objects must produce the same integer result.<br>
+   > method equals and hashcode must see the same atributes, and, work them same way to be equals;<br>
+   > On TreeSet though, it will remove duplicates based on comparable or comparator.
+   - Some example [here](./CollectionsBa/src/edu/exercicios/try1/LinguagemFavorita.java)
+   - More help: [1](https://dzone.com/articles/working-with-hashcode-and-equals-in-java), [2](https://www.youtube.com/watch?v=QvHBHuuddYk)
 
 It has three types:
  - HashSet 
@@ -256,7 +263,6 @@ It has three types:
    - Dont maintain any order because it depends on Hash function
    - Best Performance
    - null will be counted once...
-   -
  - LinkedHashSet
    - Internally it is converted to a LinkedHashMap..
    - Maintain insertion order
@@ -265,6 +271,8 @@ It has three types:
  - TreeSet
    - Internally it is converted to a TreeMap..
    - It is has natural order of the default sort()/comparable()
+   > TreeSet will discard duplicates based on comparable or comparator. Be cautious: it is diferent than HashSet and LinkedHashSet <br>
+   > If you want to remove duplicates and order it, it is better arrayList to LinkedHashSet to arrayList
 
  ~~~
  Set<type> nameOfSet = new SetType<>()
@@ -283,6 +291,13 @@ Needs to import java.util.Iterator;
    }
 ~~~
 You can use the iterated's methods.
+
+### Comparator:
+Used when things needs to be ordered. 
+ - return 1 to get it to right
+ - return -1 to get it to left
+ - return 0 to maintain
+You can encounter examples on exercises such [as](./CollectionsBa/src/edu/exercicios/try1/Main.java)
 
 ## Conversões automaticas de tipos de variaveis... Coersão
 
