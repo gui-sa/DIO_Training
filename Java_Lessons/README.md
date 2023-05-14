@@ -216,16 +216,16 @@ To work with lists you will need to import ***java.util.List*** <br>
  - The order you put it ther order it stays put;
  You can have two type of lists both dynamic types... Their diferences are listed [here](https://medium.com/@mckenziefiege/arrays-linked-lists-and-big-o-notation-486727b6259b)
  - LinkedArray
-  - It is doubly linked.
-  - Better for manipulation (adding or removing it)
-  - They are static under the hood and linked one to another using pointers
-  - O(1) to adding in beggining
-  - O(n) to access or removing or creating in any location
+   - It is doubly linked.
+   - Better for manipulation (adding or removing it)
+   - They are static under the hood and linked one to another using pointers
+   - O(1) to adding in beggining
+   - O(n) to access or removing or creating in any location
  - ArrayList
-  - It is better used when adding/removing is less common than accessing it.
-  - Under the hood Java produces a static array... when you need to increase its size, you can
-  - O(1) to access from any location or creating on the beggining
-  - O(n) to create or remove in any location
+   - It is better used when adding/removing is less common than accessing it.
+   - Under the hood Java produces a static array... when you need to increase its size, you can
+   - O(1) to access from any location or creating on the beggining
+   - O(n) to create or remove in any location
 You can Iterate it using an **Iterator**, using for each or using a for .get method <br>
 Some methods:
  - .add()
@@ -306,6 +306,14 @@ There are three types of MAP:
 Click [here](./CollectionsC) for an example!<br>
 Some Functions:
  - .put(key,value)
+ > *equals* and *hashcode* is used to remove duplicates in keys, otherwise they use pointer value
+ - .remove(key)
+ - .containsKey(key)
+ - .get(key)
+ - .clear()
+ - .size()
+ - .keySet() : returns HashSet of the keys
+ - .values() : returns arrayList of the values
 
 ### Iterator:
 Needs to import java.util.Iterator;
@@ -581,6 +589,13 @@ It can have diferents parameters and its receiving orders;
 
 ## Others Links:
  - [Teacher GitHub Material](https://github.com/digitalinnovationone/trilha-java-basico)
+
+## Generating IDs:
+[UUID class](https://www.youtube.com/watch?v=lGh1PbIY_Sc) creates it using 128 bits or 15 bytes
+> Curiosity you can save it in [mysql](https://www.mysqltutorial.org/mysql-uuid/#:~:text=In%20MySQL%2C%20you%20can%20store,IS_UUID) using Binary(16) <br>
+> [Is it really unique?](https://towardsdatascience.com/are-uuids-really-unique-57eb80fc2a87)
+>> Nope, but there is chance of 99,99% of being unique.
+
 
 *******
 Sumary:

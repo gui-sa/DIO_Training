@@ -30,5 +30,15 @@ public class Main {
                  */
 
                 System.out.println("YEAH");
+
+                List<Aviao> comercial = new ArrayList<>() {
+                        {
+                                add(new Aviao("Queridinho do papai", 60));
+                                add(new Aviao("Boing777", 200));
+                                add(new Aviao("ANATEL BUS", 110));
+                        }
+                };
+
+                comercial.get(0)
         }
 }
