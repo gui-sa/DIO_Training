@@ -39,6 +39,6 @@ public class Main {
                         }
                 };
 
-                comercial.get(0)
+                comercial.get(0);
         }
 }

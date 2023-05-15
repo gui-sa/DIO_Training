@@ -314,6 +314,7 @@ Some Functions:
  - .size()
  - .keySet() : returns HashSet of the keys
  - .values() : returns arrayList of the values
+ - .entrySet() : returns a diferent way of visualizing it : \[key1=value1, key2=value2,...]
 
 ### Iterator:
 Needs to import java.util.Iterator;
@@ -472,6 +473,53 @@ class subclass extends superclass{
 ~~~
 
 <div id='random' />
+
+## Exception:
+Makes code robust and reliable. <br>
+Exceptions interrupts normal code flux. <br>
+They are subclasses of *Throwable* which is subclass of Object. <br>
+There are three types of **problems**:
+ - **ERROR** : cant be treated and will break your code.
+ > Indicates problems with JVM resources.
+ - **Unchecked (Runtime Exception)** :  can be avoided if treated. Even if you dont treat it, wont break your code. Are subclasses from RunTimeException Class
+ > Compiler cant predict it. Usually is created by logic error. JVM cant predict it
+ - **Checked Exception (Exception)** : can be avoided if treated. If you dont show Java Compiler the trhows of CheckedException, then it wont proceed with compilation. If you Throws the Checked Exceptions it will run, BUT, it can break yout code if the exception happens. To avoid breaking your code, treat it with try/catch/finally .
+
+ How to treat Exception:
+ ~~~
+ try {
+   //codes that might trigger an Exception
+   }
+ catch (ExceptionType e){
+   // Your IDE might help you out on ExceptionType
+ }
+ // You can have more than one.. The especialized Catch must be lexically above the generic one
+ finally{
+   // Optional ... Always run.
+ }
+ ~~~
+ >You can create try/finally only
+ - .printStackTrace(); //prints stack trace
+
+Throws is a method for throwing one or more Exception. Throw is one Exception especifically <br>
+You use Throws when you desire to treat a checked exception later on. <br>
+You can create your own exception by extending Exception Class <br>
+Exception Types:
+ - NumberFormatException
+ > Cannot parse from string to number
+ - ArithmeticExeption
+ > Because division by zero.
+ - FileNotFoundException -  Checked Exception
+ > File wasnt found.. Subclass of IOException
+ - IOException - Checked Exceptions
+ - ArrayIndexOutOfBoundException 
+ > You tried to access a memory space that wasnt allocated by JVM
+It is possible to Customize an Exception by extending Exception Class. <br>
+However JVM wont catch it. you will need to call a generic type and then specialize by creating a new instance of that customized...
+~~~
+throw new CustomizedException(argsYouVeCreated);
+~~~
+IF you create an instance of a CustomizedExecption, then, you can catch it later on!.
 
 ## Random
 
