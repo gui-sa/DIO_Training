@@ -1,4 +1,4 @@
-# JAVA_LESSONS
+﻿# JAVA_LESSONS
 
 <div id='summary' /> 
 
@@ -247,7 +247,14 @@ For some examples, just give a peak at [CollectionsA](./CollectionsA/src/edu/exe
  - Average
 
 <div id='set' />
-
+>> When implementing Set and Map you need to have overrided equals method and hashcode methods. <br>
+>> A sugestion is:
+~~~
+Objects.hash(element1,element2,...)
+~~~
+~~~
+Objects.equals(this.atr,((Cast)obj).atr) && Objects.equals(this.atr2,((Cast)obj).atr2) ...
+~~~
 ### SET :
 To work with lists you will need to import ***java.util.Set*** <br>
 You usually use SET to dump a list and remove its duplicates.
@@ -338,6 +345,17 @@ You can encounter examples on exercises such [as](./CollectionsBa/src/edu/exerci
  - se voce colocar string somando um numero: o numero vai ser convertido para string e então concatenado
 
 <div id='class' />
+
+
+### Stream
+Used to filter, iterate through a Collection... Usually requires lambda functions<br>
+Some methods:
+ - .foreach :  it is a foreach VOID
+ - .mapToInt : it is a foreach returning int in each loop
+ - .mapToDouble : it is a foreach returning double in each loop
+ - .map : it is a foreach returning String in each loop
+ - .sum()
+ - .average()
 
 ## Class
 Classes are objects blueprints. Objects are abstractions of a instance of a problem. <br>
