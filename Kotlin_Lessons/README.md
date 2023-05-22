@@ -218,6 +218,48 @@ It is "open" by necessity
 It is a class that permits be extended.<br>
 open functions permits override.
 
+### enum class:
+It is classes that defines constant well defined status. <br>
+Do not accept extend
+
+### sealed class:
+It is classes that permits inheritance within the package only. <br>
+It is a protect extension class.
+
+### object keyword:
+You can create a singleton object to organize objects for example:
+~~~
+val teste = object{
+    var teste1 : Int = 1
+    var teste2 : String = "yeah"
+}
+println(teste.teste1)
+~~~
+Another way is creating an object like with methods:
+~~~
+object teste {
+    //properties and methods
+}
+fun main(){
+    teste // you can use him normally
+}
+~~~
+Finnaly, tou can use him to create a static method or atributes using **companion**:
+~~~
+class teste{
+    companion object teste2{
+        //properties and funcions
+    }
+
+}
+fun main(){
+    //Inside here, you can ignore teste2 name and use directly teste2 methods and properties stacly
+    // To use the static methods or properties you dont use to instanciate
+}
+
+~~~
+
+
 ## Generics:
 Used one you want to receive as parameter something from any type:
 ~~~
@@ -361,3 +403,123 @@ Also works in Char
  - .map(lambda) : to transform something into other... nao desempacota
  - .any(lambda) : to return a boolean saying if contains or not.
  - .flatMap(lambda) : ele desempacota os elementos em uma unica lista fazer transformação
+
+
+## Functions:
+
+### Scope functions:
+
+#### let:
+You can call it from variables of diferent type:
+ - It only runs if not null
+    - It can be used to null protect
+~~~
+    str?.let{
+        //functions where str cannot be null
+    }
+
+~~~
+> You can create lots os .let inside another
+.let works with "it" or a lambda functions variable
+
+### run:
+Does the same as let but "run" dont use it or lambda... It calls the variable directly "this"
+
+### with:
+Works with "this" directly. an example:
+You can do:
+~~~
+class Cachorro(var nome:String, val especie:String )
+
+fun main(){
+    val teste = Cachorro("bob","chiuaua")
+    println("${teste.nome} é um ${teste.especie}")
+}
+~~~
+ou voce pode fazer:
+   ~~~
+class Cachorro(var nome:String, val especie:String )
+
+fun main(){
+    val teste = Cachorro("bob","chiuaua")
+    with(teste){
+        println("$nome é um $especie")
+    }
+}
+~~~ 
+> In this case with(object), you create an scope this = object, then you can directly call methods and atributes. <br>
+> You could also use .run()
+
+### apply:
+You can use to alter values directly (when not private)
+
+### also:
+it works with lambda or "it" <br>
+It is used to create a stream of functions with the creation of objects
+
+### Infix Functions
+It creates a new method for an object that can be called using infix notation: <br>
+~~~
+infix fun Int.teste(emSeguida : String) = //return something
+println(someIntegerTeste teste "someStringTeste") // and it would return something 
+~~~
+> It can be used with methods to an specidfic action involving and class
+
+### Operator Functions
+You can override operators create infix Functions! <br>
+It all to make your code more idiomatic
+
+### High Order Functions
+Functions that returns other Functions!!! <br>
+You pass a function as an atribute.. So whenever function you pass into it: it will run! <br>
+You can use it to create lambda functios on the fly or to use factory pattern.
+Another way is returning another function: <br>
+In this case you can indicate in the return a lambda operation, so, you can return a function directly
+
+### Lambda Functions:
+You can indicate the origin type or you can use 'it' (it can be used only when its a unique parameter).
+
+### Extension Functions and Properties:
+You simply create an AnObject.anotherFunction or AnObject.anotherProperie = //something or action <br> 
+That way you will run perfectly as it was extended or it was a part of a class <br>
+You can also create an extension Function in GENERIC!! Then in any data type, it will receive a new method or propertie
+
+### Suspend Functions and coroutines
+Coroutines are ASSYNC CALLs <br>
+It is an indication to a function saying it might be assync.
+
+## Execeptions:
+In KOTLING EVERY EXCEPTION IS UNCHECKED!! BE CAREFULL! <br>
+You might receive from compiler, however you can create yours...
+~~~
+throw Exception("Something Strange Happened")
+~~~
+To treat an exception:
+> Finally will always be done... <br>
+> Everything inside try will check for exception... if something happen, catch will "check" the error and try to treat, if possible. <br>
+> You can be generable in catch using Superclass Throwable
+
+~~~
+try{
+
+}catch(e:SomeException){
+ //Optional or multiples from especialized to general
+}finally{
+ // Optional
+}
+~~~
+You can also use try/catch as expression:
+~~~
+val div:double = try{a/b}catch(e: ArithmeticException){1000000000}
+~~~
+> try/catch sempre vai retornar o ultimo valor na expression... be carefull with the order when dealing with try/catch expression
+
+Some Exception.. The same as JAVA! (java.lang)
+ - ArithmeticException
+ - ArrayIndexOutOfBoundsException
+ - IOException
+ - IllegalArgumentException("")
+> When creating a throw in a class use a comment just on top of it: <br>
+> @Throws(ExceptionName::class)
+
+Throw also is an expression but it is a Nothing Type.
