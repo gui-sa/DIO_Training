@@ -1,0 +1,5 @@
+seo (id_seo*, categorys)
+author (id_author*, name, born)
+videos (id_videos*, fk_author(author.id_author), title, likes, dislikes, data, fk_categorys(seo.id_seo))
+playlist (fk_videos(videos.id_videos)*, title*)
+
