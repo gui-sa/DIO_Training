@@ -1,3 +1,6 @@
 *.vscode
 *.env
 *.class
+/build
+/bin
+*.class

@@ -86,4 +86,24 @@ ssh user@IP
 ip a
 ~~~
     
-
+# Padroes de Projeto
+ - Padrões Criacionais
+   - Abstract Factory
+   - Builder
+   - Factory Methods
+   - Protype
+   - Singleton
+ - Padrões Comportamentais
+   - Chain Of Responsability
+   - Iterator
+   - Observer
+   - Strategy
+   - Template Method
+ - Padrões Estruturais
+   - Adapter
+   - Bridge
+   - Composite
+   - Decorator
+   - Facade
+   - Flyweight
+   - Proxy

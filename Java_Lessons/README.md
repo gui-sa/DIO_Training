@@ -99,6 +99,10 @@ Sumary:
 > To run a java package: compile main class and then run subpackage1.subpackage2...main <br>
 > It is not worth to run java project outside an IDE because it takes too long to run and iterate.
 
+
+### Gradle
+Another way to compile, build, distribute and automatizate the compiling/build easily is using **gradle** or **gradlew** foun [here](./../Gradle_Lessons/README.md)
+
 <div id='class_anatomy' /> 
 
 ## Class Anatomy:
@@ -663,26 +667,138 @@ It can have diferents parameters and its receiving orders;
 >> Nope, but there is chance of 99,99% of being unique.
 
 
-*******
-Sumary:
- - [Summary](#summary)
- - [Introductions](#intro)
- - [Setting Up Java](#set_up_java)
- - [Class Anatomy](#class_anatomy)
- - [Folder Structure](#folder_structure)
- - [Variable Types](#types)
- - [Automatic Conversions](#coerce)
- - [Random](#random)
- - [Strings](#str)
- - [Dates](#date)
- - [Some Functions Examples](#function)
- - [Java Doc](#doc)
- - [Scanner](#scanner)
- - [Scope](#scope)
- - [Logic Operators](#logic)
- - [Bitwise Operators](#bit)
- - [Overload](#over)
- - [Usefull Links](#link_u)
- - [Other Links](#link_o)
+## Tests
 
+It is important to test things to guarantee it is working properly, and, to guarantee your code accomplishts costumer requirements and/or expectations (that usually differs). <br>
+It is a good way to understand a code running a test! Because there, it will show the clauses that MUST work/or not. <br>
+Tests **DO NOT ENSURE** that your code is free of BUG <br>
+There are plugins in [Gradle](./../Gradle_Lessons/README.md) used to test it out!<br>
+In Java you can run it using tag (javadoc) @Test just above method and you  will use ***Assertions*** class. It is valid to mention that you will create another class just to test it. 
+The motive in which you always re-run all the tests is to ensure the new feature are not affecting others modules! <br>
+The more you test: better is your code metric! <br>
+Types of tests:
+ - Unity Test
+ - Performance test
+
+These can be:
+ - Automatizated or not!
+It is important that a test "**always**" work <br>
+Automatize your test... Gradle automatize them for you. <br>
+Create coverage tests for classes interactions!! <br>
+
+
+### JUnit
+Composed by packages:
+ - JUnit Platform :  its engine
+ - Junit Jupiter: where most of classes are. The **most used**
+ - Junit Vintage : more tools
+You can use it: installing manually, using Maven or using Gradle <br>
+
+#### Configurating Junit:
+ 1. Create a new Gradle environment and set Junit up Jupiter
+ 2. Open build.Gradle and put Jupiter engine getting it [here](https://mvnrepository.com/)
+   1. junit
+   2. junit engine jupiter
+   3. select gradle config
+   4. copy and paste in buil.gradle dependencies (check if mavenCentral() was put in repositories)
+> Usually it will be made automatically by Gradle...
+~~~
+repositories {
+    // Use Maven Central for resolving dependencies.
+    mavenCentral()
+}
+
+dependencies {
+    // Use JUnit Jupiter for testing.
+    testImplementation 'org.junit.jupiter:junit-jupiter:5.9.1'
+
+    // This dependency is used by the application.
+    implementation 'com.google.guava:guava:31.1-jre'
+}
+~~~
+
+### Unity Tests
+It is called that way because you test the smaller code module possible: such function or class. <br>
+You might write unity test while developing: together, later or before developing (TDD) <br>
+Unity Test is the cheapest of them all! <br>
+Here are some methods for this class:
+ - .assertTrue()
+ - .assertFalse()
+ - .assertEquals()
+ - .assertNotEquals()
+ - .assertArrayEquals()
+> They need to have same length <br>
+> They need to have same order
+ - .assertArrayNotEquals()
+> Same as before
+ - .assertNull()
+ - .assertNotNull()
+ - .assertThrows()
+ - .assertDoesNotThrows()
+
+> Be CAUTIOUS... **gradle run tasks by default: do not check gradle test**
+To create that task in build.gradle:
+~~~
+tasks.named('run'){
+   dependsOn 'test'
+}
+~~~
+OR
+~~~
+// Another way to do the same without changing 'run' task
+task testAndRun{
+    group "myTasks" 
+    description "Check the tests first, run later"
+    dependsOn "test"
+    finalizedBy "run"
+}
+~~~
+To validate test in VSCODE you should have installed the Gradle extension, Java Extension and the Test files.java needs to have the right name (otherwise it will error).
+
+#### BEFORE AND AFTER:
+There might be test that needs to do some activities before starting the tests... and after the tests... In this case you use @BeforeAll @AfterAll above the method... They will work for all methods in the class . It will be run once<br>
+You can also use @BeforeEach and @AfterEach to a single test method in that class. It will be run for EACH test method <br>
+
+#### ASSUMPTIONS
+From Class Assumption <br>
+It does not break your test if failed.. It just continue (by-passing it). <br>
+Used to manipulate test flux:
+ - .assumeTrue()
+ - .assumeFalse()
+
+#### Conditional:
+Used to check using @ and work just like assumption. <br>
+Must be put between @test and method. <br>
+Examples of @:
+ - @EnableOnOS(OS.LINUX/OS.MAC/OS.WINDOWS)
+ - @EnableOnJRE(JAVA_17/...)
+
+#### Testing Exceptions:
+Used to validate that your *"new throw Exception("blabla")"* is working properly without breaking your test chain. <br>
+~~~
+Assertions.assertThrows(ExceptionType.class, ()-> //function that should except)
+~~~
+
+#### Ordering Tests:
+Just above the test class, use:
+~~~
+@TestMethodOrder(a method Orderer)
+~~~
+ - ***MethodOrderer.OrderAnnotation.class*** : in this case it will run using @Order(1...) above each method
+ - ***MethodOrderer.MethodName.class*** : will choose A...Z order in method name
+ - ***MethodOrderer.Random.class*** : random order
+ - ***MethodOrderer.DisplayName.class*** : in this case it will run using A...Z of displayed name @DisplayName("Funcionalidade A sendo avaliada")
+
+### What needs to be tested?
+DO NOT WRTE tests in java app development <br>
+Do NOT forget to @Test <br>
+ - Limit values cases
+ - True and False cases
+ - Ordering
+ - Equallity
+ - Nullibility
+ - Exceptions (try/catch)
+
+*******
+[Wanna return to the begin?](#summary)
 *******
